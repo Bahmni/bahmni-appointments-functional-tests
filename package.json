@@ -1,0 +1,35 @@
+{
+  "name": "bahmni-appointments-functional-tests-testcafe",
+  "version": "1.0.0",
+  "description": "Bahmni - functional tests for appointments module",
+  "main": "runner.js",
+  "private": true,
+  "scripts": {
+    "test": "node runner.js",
+    "lint": "node_modules/.bin/eslint ."
+  },
+  "keywords": [
+    "OpenMRS",
+    "Bahmni",
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^8.1.0",
+    "faker": "^4.1.0",
+    "testcafe": "^1.5.0",
+    "testcafe-reporter-s1html": "^1.4.12"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-plugin-testcafe": "^0.2.1"
+  },
+  "engines": {
+    "node": ">= 10.16.3",
+    "npm": ">= 6.11.3"
+  }
+}

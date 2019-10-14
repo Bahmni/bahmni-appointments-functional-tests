@@ -1,0 +1,23 @@
+{
+  "globals": {
+    "fixture": true,
+    "test": true
+  },
+  "env": {
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:testcafe/recommended"],
+  "plugins": ["testcafe"],
+  "rules": {
+    "no-trailing-spaces": 1,
+    "no-unused-expressions": 0
+  }
+}

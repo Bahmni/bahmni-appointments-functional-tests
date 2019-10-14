@@ -1,0 +1,13 @@
+{
+  "browsers": ["chrome", "firefox"],
+  "concurrency": 1,
+  "speed": 1,
+  "pageLoadTimeout": 3000,
+  "selectorTimeout": 10000,
+  "assertionTimeout": 3000,
+  "skipJsErrors": true,
+  "takeScreenshotsOnFails": true,
+  "screenshotPath": "reports/screenshots/",
+  "screenshotPathPattern": "${TEST}-${USERAGENT}-${FILE_INDEX}.png",
+  "debugOnFail": true
+}
