@@ -1,4 +1,4 @@
-# Bahmni - functional tests for appointments module &nbsp; [![Build Status](https://travis-ci.org/rmkanda/bahmni-appointments-functional-tests-testcafe.svg?branch=master)](https://travis-ci.org/rmkanda/bahmni-appointments-functional-tests-testcafe)
+# Bahmni - functional tests for appointments module &nbsp; [![Build Status](https://travis-ci.org/Bahmni/bahmni-appointments-functional-tests.svg?branch=master)](https://travis-ci.org/Bahmni/bahmni-appointments-functional-tests)
 
 ## Setup
 
