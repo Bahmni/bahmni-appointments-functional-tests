@@ -16,11 +16,13 @@ const get = async (
     });
     return response.data;
   } catch (error) {
-    console.error(
-      `Error while fetching ${url}`,
-      error.response.status,
-      error.response.data
-    );
+    if (error.response)
+      console.error(
+        `Error while fetching ${url}`,
+        error.response.status,
+        error.response.data
+      );
+    else console.log(error.config.url, error.errno);
   }
 };
 
