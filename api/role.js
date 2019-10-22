@@ -3,12 +3,20 @@ const API = require("../utils/api");
 const restApiUrl = `${process.env.APPLICATION_URL}/ws/rest/v1`;
 
 const getAllRoles = async () => {
-  return await API.get(`${restApiUrl}/role?v=full`);
+  return await API.get(`${restApiUrl}/role?v=full&limit=100`);
 };
 
 const isRoleExists = async roleName => {
   if (getRoleId(roleName)) return true;
   return false;
+};
+
+const getRoleDetails = async roleName => {
+  const roles = await getAllRoles();
+  await roles;
+  if (roles && roles.results && roles.results.length > 0) {
+    return roles.results.find(role => role.name === roleName);
+  }
 };
 
 const getRoleId = async roleName => {
@@ -36,6 +44,7 @@ const getRoleIds = async roleNames => {
 
 module.exports = {
   getAllRoles,
+  getRoleDetails,
   getRoleId,
   getRoleIds,
   isRoleExists

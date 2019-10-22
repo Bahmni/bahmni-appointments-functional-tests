@@ -1,4 +1,5 @@
 require("../config");
+const faker = require("faker");
 
 const API = require("../utils/api");
 const roleApi = require("./role");
@@ -7,21 +8,26 @@ const providerApi = require("./provider");
 const restApiUrl = `${process.env.APPLICATION_URL}/ws/rest/v1`;
 
 const getAllUsers = async () => {
-  return await API.get(`${restApiUrl}/user?v=full`);
-};
-
-const getAllRoles = async () => {
-  return await API.get(`${restApiUrl}/role?v=full`);
+  return await API.get(`${restApiUrl}/user?v=full&limit=100`);
 };
 
 const isUserExists = async username => {
-  const users = await API.get(`${restApiUrl}/user?v=full`);
+  const users = await API.get(`${restApiUrl}/user?v=full&limit=100`);
   if (users && users.results && users.results.length > 0) {
     return users.results.find(user => user.username === username);
   }
 };
 
-const createUser = async (username, firstName, lastName, roles = []) => {
+const getUserDetails = async username => {
+  return await isUserExists(username);
+};
+
+const createUser = async (
+  username,
+  firstName = faker.name.firstName(),
+  lastName = faker.name.lastName(),
+  roles = []
+) => {
   const exsistingUser = await isUserExists(username);
   if (exsistingUser) return exsistingUser;
   const roleIds = await roleApi.getRoleIds(roles);
@@ -45,7 +51,7 @@ const deleteUserById = async uuid => {
 
 module.exports = {
   getAllUsers,
-  getAllRoles,
   createUser,
+  getUserDetails,
   deleteUserById
 };
