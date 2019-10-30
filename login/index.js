@@ -11,9 +11,9 @@ class LoginPage {
   }
 
   async login(
-    username = process.env.ADMIN_USERNAME,
+    username,
     password = process.env.ADMIN_PASSWORD,
-    location = "Registration"
+    location = "General Ward"
   ) {
     await t
       .maximizeWindow()
