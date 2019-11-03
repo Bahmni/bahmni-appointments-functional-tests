@@ -1,11 +1,8 @@
-require("../config");
-
+const config = require("../config");
 const API = require("../utils/api");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
-
 const getAllVisitTypes = async () => {
-  return await API.get(`${restApiUrl}/visittype?v=full`);
+  return await API.get(`${config.REST_API_URL}/visittype?v=full`);
 };
 
 const getVisitTypeId = async visitTypeName => {
@@ -22,7 +19,7 @@ const startVisit = async (patientId, visitType = "Facility Visit") => {
     patient: patientId,
     visitType: visitTypeId
   };
-  return await API.post(`${restApiUrl}/visit?v=full`, visitInfo);
+  return await API.post(`${config.REST_API_URL}/visit?v=full`, visitInfo);
 };
 
 module.exports = {

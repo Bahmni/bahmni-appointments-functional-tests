@@ -1,14 +1,12 @@
-require("../config");
 const faker = require("faker");
 
+const config = require("../config");
 const API = require("../utils/api");
 const locationApi = require("./location");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
-
 const getNextPatientIdentifier = async () => {
   const response = await API.get(
-    `${process.env.APPLICATION_URL}/openmrs/module/idgen/generateIdentifier.form?source=1&username=${process.env.ADMIN_USERNAME}&password=${process.env.ADMIN_PASSWORD}`
+    `${config.OPENMRS_URL}/module/idgen/generateIdentifier.form?source=1&username=${process.env.ADMIN_USERNAME}&password=${process.env.ADMIN_PASSWORD}`
   );
   if (response && response.identifiers && response.identifiers.length > 0) {
     return response.identifiers[0];
@@ -42,7 +40,7 @@ const registerPatient = async (
       }
     ]
   };
-  return await API.post(`${restApiUrl}/patient?v=full`, patientInfo);
+  return await API.post(`${config.REST_API_URL}/patient?v=full`, patientInfo);
 };
 
 module.exports = {

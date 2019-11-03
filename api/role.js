@@ -1,9 +1,8 @@
+const config = require("../config");
 const API = require("../utils/api");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
-
 const getAllRoles = async () => {
-  return await API.get(`${restApiUrl}/role?v=full&limit=100`);
+  return await API.get(`${config.REST_API_URL}/role?v=full&limit=100`);
 };
 
 const isRoleExists = async roleName => {

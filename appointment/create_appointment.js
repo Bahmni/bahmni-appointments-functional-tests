@@ -1,7 +1,6 @@
-require("../config");
 import { Selector, t } from "testcafe";
 
-class AppointmentsPage {
+class CreateAppointmentPage {
   constructor() {}
 
   async newAppointment(
@@ -54,18 +53,6 @@ class AppointmentsPage {
       .expect(Selector(".message-container").innerText)
       .eql("\t\nAppointment saved successfully\n\t");
   }
-
-  async openAppointmentList() {
-    await t.click(Selector("a").withText("Appointments List"));
-  }
-
-  async switchToListView() {
-    await t.click(
-      Selector(".view-toggle-wrapper")
-        .find("a")
-        .withText("List view")
-    );
-  }
 }
 
-export default new AppointmentsPage();
+export default new CreateAppointmentPage();

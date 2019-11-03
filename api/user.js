@@ -1,18 +1,16 @@
-require("../config");
 const faker = require("faker");
 
+const config = require("../config");
 const API = require("../utils/api");
 const roleApi = require("./role");
 const providerApi = require("./provider");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
-
 const getAllUsers = async () => {
-  return await API.get(`${restApiUrl}/user?v=full&limit=100`);
+  return await API.get(`${config.REST_API_URL}/user?v=full&limit=100`);
 };
 
 const isUserExists = async username => {
-  const users = await API.get(`${restApiUrl}/user?v=full&limit=100`);
+  const users = await API.get(`${config.REST_API_URL}/user?v=full&limit=100`);
   if (users && users.results && users.results.length > 0) {
     return users.results.find(user => user.username === username);
   }
@@ -40,13 +38,13 @@ const createUser = async (
     },
     roles: roleIds
   };
-  const userResponse = await API.post(`${restApiUrl}/user`, userInfo);
+  const userResponse = await API.post(`${config.REST_API_URL}/user`, userInfo);
   await providerApi.createProvider(userResponse.person.uuid);
   return userResponse;
 };
 
 const deleteUserById = async uuid => {
-  return API.deleteRecord(`${restApiUrl}/user/${uuid}?purge=true`);
+  return API.deleteRecord(`${config.REST_API_URL}/user/${uuid}?purge=true`);
 };
 
 module.exports = {

@@ -1,8 +1,8 @@
 import loginPage from "../login";
+import * as config from "../config";
 
-fixture`Application Login`
-  .page`${process.env.APPLICATION_URL}/bahmni/home/index.html#/login`;
+fixture`Application Login`.page`${config.BAHMNI_LOGIN_URL}`;
 
-test("Valid login test", async () => {
-  await loginPage.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD);
+test("Admin login test", async () => {
+  await loginPage.loginAsAdmin();
 });
