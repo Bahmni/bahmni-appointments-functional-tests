@@ -1,9 +1,8 @@
+const config = require("../config");
 const API = require("../utils/api");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
-
 const getAllProviders = async () => {
-  return await API.get(`${restApiUrl}/provider?v=full`);
+  return await API.get(`${config.REST_API_URL}/provider?v=full`);
 };
 
 const createProvider = async personId => {
@@ -12,7 +11,7 @@ const createProvider = async personId => {
     identifier: "docter",
     retired: false
   };
-  return await API.post(`${restApiUrl}/provider`, providerInfo);
+  return await API.post(`${config.REST_API_URL}/provider`, providerInfo);
 };
 
 module.exports = {

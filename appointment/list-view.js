@@ -1,4 +1,4 @@
-import { Selector, t } from "testcafe";
+import { Selector } from "testcafe";
 
 class AppointmentsListPage {
   constructor() {}

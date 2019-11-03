@@ -1,23 +1,21 @@
 import { t } from "testcafe";
 
+import * as config from "../config";
 import patientApi from "../api/patient";
 import loginPage from "../login";
-import appointmentsPage from "../appointments";
+import appointmentsPage from "../appointment";
+import createAppointmentPage from "../appointment/create_appointment";
 
-fixture`New Appointment`
-  .page`${process.env.APPLICATION_URL}/bahmni/home/index.html#/login`.beforeEach(
+fixture`Create Appointment`.page`${config.BAHMNI_LOGIN_URL}`.beforeEach(
   async () => {
     await t.maximizeWindow();
-    await loginPage.login(
-      process.env.ADMIN_USERNAME,
-      process.env.ADMIN_PASSWORD
-    );
+    await loginPage.loginAsAdmin();
+    await appointmentsPage.open();
   }
 );
 
 test("Creating a new appointment", async () => {
-  await t.navigateTo(`${process.env.APPLICATION_URL}/bahmni/appointments`);
   const patient = await patientApi.registerPatient();
   await appointmentsPage.openAppointmentList();
-  await appointmentsPage.newAppointment(patient);
+  await createAppointmentPage.newAppointment(patient);
 });
