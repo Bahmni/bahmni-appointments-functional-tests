@@ -5,7 +5,7 @@ const API = require("../utils/api");
 const roleApi = require("./role");
 const providerApi = require("./provider");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/ws/rest/v1`;
+const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
 
 const getAllUsers = async () => {
   return await API.get(`${restApiUrl}/user?v=full&limit=100`);

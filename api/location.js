@@ -2,7 +2,7 @@ require("../config");
 
 const API = require("../utils/api");
 
-const restApiUrl = `${process.env.APPLICATION_URL}/ws/rest/v1`;
+const restApiUrl = `${process.env.APPLICATION_URL}/openmrs/ws/rest/v1`;
 
 const getAllLocations = async () => {
   return await API.get(`${restApiUrl}/location?v=full&limit=100`);
