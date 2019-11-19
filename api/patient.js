@@ -6,7 +6,7 @@ const locationApi = require("./location");
 
 const getNextPatientIdentifier = async () => {
   const response = await API.get(
-    `${config.OPENMRS_URL}/module/idgen/generateIdentifier.form?source=1&username=${process.env.ADMIN_USERNAME}&password=${process.env.ADMIN_PASSWORD}`
+    `${config.OPENMRS_URL}/module/idgen/generateIdentifier.form?source=1&username=${config.ADMIN_USERNAME}&password=${config.ADMIN_USERNAME}`
   );
   if (response && response.identifiers && response.identifiers.length > 0) {
     return response.identifiers[0];
@@ -17,8 +17,8 @@ const registerPatient = async (
   firstName = faker.name.firstName(),
   lastName = faker.name.lastName(),
   gender = "M",
-  location = "OPD-1",
-  identifierType = "81433852-3f10-11e4-adec-0800271c1b75"
+  location = config.DEFAULT_TEST_LOCATION,
+  identifierType = config.DEFAULT_PATIENT_IDENTIFIER_TYPE
 ) => {
   const patientIdentifier = await getNextPatientIdentifier();
   const locationId = await locationApi.getLocationId(location);

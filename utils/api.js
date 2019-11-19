@@ -1,9 +1,11 @@
 const axios = require("axios");
 
+const config = require("../config");
+
 const get = async (
   url,
-  username = process.env.ADMIN_USERNAME,
-  password = process.env.ADMIN_PASSWORD
+  username = config.ADMIN_USERNAME,
+  password = config.ADMIN_PASSWORD
 ) => {
   try {
     const response = await axios({
@@ -29,8 +31,8 @@ const get = async (
 const post = async (
   url,
   data,
-  username = process.env.ADMIN_USERNAME,
-  password = process.env.ADMIN_PASSWORD
+  username = config.ADMIN_USERNAME,
+  password = config.ADMIN_PASSWORD
 ) => {
   try {
     const response = await axios({
@@ -57,8 +59,8 @@ const post = async (
 
 const deleteRecord = async (
   url,
-  username = process.env.ADMIN_USERNAME,
-  password = process.env.ADMIN_PASSWORD
+  username = config.ADMIN_USERNAME,
+  password = config.ADMIN_PASSWORD
 ) => {
   try {
     const response = await axios({

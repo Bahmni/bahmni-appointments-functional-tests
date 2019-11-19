@@ -1,5 +1,6 @@
-require("../config");
 import { Selector, t } from "testcafe";
+
+import * as config from "../config";
 
 class LoginPage {
   constructor() {
@@ -13,7 +14,7 @@ class LoginPage {
   async login(
     username,
     password = process.env.ADMIN_PASSWORD,
-    location = "General Ward"
+    location = config.DEFAULT_TEST_LOCATION
   ) {
     await t
       .maximizeWindow()
@@ -34,7 +35,7 @@ class LoginPage {
   }
 
   async loginAsAdmin() {
-    await this.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD);
+    await this.login(config.ADMIN_USERNAME, config.ADMIN_PASSWORD);
   }
 }
 
