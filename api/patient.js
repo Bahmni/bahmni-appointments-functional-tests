@@ -6,11 +6,11 @@ const locationApi = require("./location");
 
 const getNextPatientIdentifier = async () => {
   const response = await API.get(
-    `${config.OPENMRS_URL}/module/idgen/generateIdentifier.form?source=1&username=${config.ADMIN_USERNAME}&password=${config.ADMIN_USERNAME}`
+    `${config.OPENMRS_URL}/module/idgen/generateIdentifier.form?source=1&username=${config.ADMIN_USERNAME}&password=${config.ADMIN_PASSWORD}`
   );
   if (response && response.identifiers && response.identifiers.length > 0) {
     return response.identifiers[0];
-  }
+  } else console.log("Unable to generate next patient identifier - ", response);
 };
 
 const registerPatient = async (

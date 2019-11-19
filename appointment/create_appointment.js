@@ -29,7 +29,6 @@ class CreateAppointmentPage {
         .find("a")
         .withText(patient.person.display)
     );
-    console.log(await this.patientField.value);
     await t.expect(this.patientField.value).contains(patient.person.display);
   }
 
@@ -76,6 +75,7 @@ class CreateAppointmentPage {
 
   async enterAppointmentStartTime(time) {
     await t.typeText("#startTimeID", time);
+    await t.click("#endTimeID");
   }
 
   async selectWalkInAppointment() {
@@ -87,6 +87,7 @@ class CreateAppointmentPage {
   }
   async saveAppointment() {
     await t.click(this.saveButton);
+    // await t.click(this.saveButton);
   }
 
   async veifyAppointmentSavedMessage() {
