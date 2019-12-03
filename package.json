@@ -21,16 +21,16 @@
     "dotenv": "^8.1.0",
     "faker": "^4.1.0",
     "json-2-csv": "^3.5.7",
-    "testcafe": "^1.5.0",
+    "testcafe": "^1.7.0",
     "testcafe-reporter-s1html": "^1.4.12"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.5.1",
+    "eslint": "^6.7.2",
     "eslint-plugin-testcafe": "^0.2.1"
   },
   "engines": {
-    "node": ">= 10.16.3",
+    "node": ">= 12.13.1",
     "npm": ">= 6.12.0"
   }
 }

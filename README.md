@@ -4,7 +4,7 @@
 
 - Pre Requisites
 
-  `Node v10.16.3`
+  `Node v12.13.1`
 
 - Env file
   Create a `test.env` file with below keys

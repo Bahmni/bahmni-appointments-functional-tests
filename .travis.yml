@@ -2,7 +2,7 @@ branches:
   only:
   - master
 language: node_js
-node_js: stable
+node_js: 12
 before_install:
 - stty cols 80
 dist: trusty
