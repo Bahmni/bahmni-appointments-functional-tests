@@ -10,8 +10,8 @@ createTestCafe("localhost", 1337, 1338)
 
     return (
       runner
-        .src(["specs/"])
-        // .reporter("s1html", "reports/result.html")
+        .src(["specs"])
+          .reporter("s1html", "reports/result.html")
         .run()
     );
   })

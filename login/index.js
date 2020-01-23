@@ -11,11 +11,14 @@ class LoginPage {
   }
 
   async login(
-    username = process.env.ADMIN_USERNAME,
+      username = process.env.ADMIN_USERNAME,
     password = process.env.ADMIN_PASSWORD,
     location = "Registration"
-  ) {
+  )
+
+  {
     await t
+
       .maximizeWindow()
       .typeText(this.username, username)
       .typeText(this.password, password);
