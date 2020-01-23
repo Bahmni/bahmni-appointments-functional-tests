@@ -1,5 +1,5 @@
 {
-  "browsers": ["chrome"],
+  "browsers": ["chrome:headless"],
   "concurrency": 1,
   "speed": 1,
   "pageLoadTimeout": 3000,
